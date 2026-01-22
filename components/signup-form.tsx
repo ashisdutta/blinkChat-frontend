@@ -1,18 +1,18 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 
 export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
   return (
@@ -27,10 +27,10 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
         <form>
           <FieldGroup>
             <Field>
-              <FieldLabel htmlFor="name">Full Name</FieldLabel>
+              <FieldLabel htmlFor="name">Name</FieldLabel>
               <Input id="name" type="text" placeholder="John Doe" required />
             </Field>
-            <Field>
+            {/* <Field>
               <FieldLabel htmlFor="email">Email</FieldLabel>
               <Input
                 id="email"
@@ -42,7 +42,7 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
                 We&apos;ll use this to contact you. We will not share your email
                 with anyone else.
               </FieldDescription>
-            </Field>
+            </Field> */}
             <Field>
               <FieldLabel htmlFor="password">Password</FieldLabel>
               <Input id="password" type="password" required />
@@ -64,7 +64,7 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
                   Sign up with Google
                 </Button>
                 <FieldDescription className="px-6 text-center">
-                  Already have an account? <a href="#">Sign in</a>
+                  Already have an account? <a href="signin">Sign in</a>
                 </FieldDescription>
               </Field>
             </FieldGroup>
@@ -72,5 +72,5 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
         </form>
       </CardContent>
     </Card>
-  )
+  );
 }
