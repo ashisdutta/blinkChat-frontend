@@ -66,7 +66,10 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
 
   return (
     <Card {...props}>
-      <CardHeader>
+      <div className="flex justify-center pt-2">
+        <img src="/logo.png" alt="logo" className="h-12 w-auto"/>
+      </div>
+        <CardHeader>
         <CardTitle>Create an account</CardTitle>
         <CardDescription>
           Enter your information below to create your account
