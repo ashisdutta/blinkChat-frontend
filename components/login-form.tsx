@@ -3,6 +3,8 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import axios from "axios"
 import {
   Card,
   CardContent,
@@ -24,6 +26,52 @@ export function LoginForm({
 }: React.ComponentProps<"div">) {
 
   const [isForgotPassword, setIsForgotPassword] = useState(false);
+  const [email, setemail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
+
+  //for login
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  const handleForgotSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+    setIsLoading(true);
+    setError("");
+    try {
+      const response = await axios.post("http://localhost:4000/api/auth/forgot-password", {email});
+
+      setMessage(response.data.message);
+    } catch (error:any) {
+      const errorMsg = error.response?.data?.message || error.message || "Something went wrong";
+      setError(errorMsg);
+    }finally{
+      setIsLoading(false)
+    }
+  }
+  
+
+  const handleSigninSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
+    e.preventDefault();
+    setIsLoading(true);
+    setError("");
+
+    try {
+      const response = await axios.post("http://localhost:4000/api/auth/login", {
+          identifier:username,
+          password
+        })
+
+        router.push("/message");
+    } catch (error:any) {
+      const errorMsg = error.response?.data?.message || error.message || "Something went wrong";
+      setError(errorMsg);
+    }finally{
+      setIsLoading(false)
+    }
+  }
 
 
   return (
@@ -41,64 +89,100 @@ export function LoginForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
-            <FieldGroup>
-              {!isForgotPassword?(<>
-                <Field>
-                <FieldLabel htmlFor="email">Username</FieldLabel>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com  or  @name"
-                  required
-                />
-              </Field>
-              <Field>
-                <div className="flex items-center">
-                  <FieldLabel htmlFor="password">Password</FieldLabel>
-                  <button 
-                  onClick={()=>setIsForgotPassword(true)}
-                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline">
-                    Forgot your password?
-                  </button>
-                </div>
-                <Input id="password" type="password" required />
-              </Field>
-              <Field>
-                <Button type="submit" className="border bg-black text-white">Login</Button>
-                <FieldDescription className="text-center">
-                  Don&apos;t have an account? <a href="signup">Sign up</a>
-                </FieldDescription>
-              </Field>
-              </>):
-                <>
-                <Field>
-                <FieldLabel htmlFor="email">Email</FieldLabel>
-                <Input
-                  id="reset-email"
-                  type="email"
-                  placeholder="m@example.com  or  @name"
-                  required
-                />
-              </Field>
 
-              <Field>
-                    <Button type="submit" className=" border w-full bg-black text-white">
-                      Send Reset Link
-                    </Button>
-                    <div className="mt-2 text-center text-sm">
-                      <button
-                        type="button"
-                        onClick={() => setIsForgotPassword(false)}
-                        className="underline underline-offset-4"
-                      >
-                        Back to Login
+            <FieldGroup>
+
+              {!isForgotPassword?(<div>
+                <form onSubmit={handleSigninSubmit}>
+                  {error && (
+                    <div className="mb-4 p-3 text-sm text-red-600 bg-red-50 border border-red-200 rounded text-center">
+                      {error}
+                    </div>
+                  )}
+                  <Field>
+                    <FieldLabel htmlFor="email">Username</FieldLabel>
+                    <Input
+                      id="email"
+                      type="text"
+                      placeholder="m@example.com  or  @name"
+                      required
+                      value = {username}
+                      onChange={(e)=>{setUsername(e.target.value)}}
+                    />
+                  </Field>
+                  <Field>
+                    <div className="flex items-center">
+                      <FieldLabel htmlFor="password">Password</FieldLabel>
+                      <button 
+                      onClick={()=>setIsForgotPassword(true)}
+                      className="ml-auto inline-block text-sm underline-offset-4 hover:underline">
+                        Forgot your password?
                       </button>
                     </div>
+                    <Input 
+                    id="password" 
+                    type="password" 
+                    value={password}
+                    onChange={(e)=>{setPassword(e.target.value)}}
+                    required />
                   </Field>
-              </>}
+                  <Field>
+
+                    <Button 
+                    type="submit" 
+                    className="border bg-black text-white mt-5"
+                    >Login</Button>
+
+                    <FieldDescription className="text-center">
+                      Don&apos;t have an account? <a href="signup">Sign up</a>
+                    </FieldDescription>
+                  </Field>
+                </form>
+              </div>):
+                <div>
+                  <form onSubmit={handleForgotSubmit}>
+                    <div className="mb-5">
+                          {message && (
+                            <div className="mb-4 p-3 text-sm text-green-600 bg-green-50 border border-green-200 rounded text-center">
+                              {message}
+                            </div>
+                          )}
+
+                          {error && (
+                            <div className="mb-4 p-3 text-sm text-red-600 bg-red-50 border border-red-200 rounded text-center">
+                              {error}
+                            </div>
+                          )}
+                      <Field>
+                        <FieldLabel htmlFor="email">Email</FieldLabel>
+                        <Input
+                          id="reset-email"
+                          type="email"
+                          value={email}
+                          placeholder="m@example.com"
+                          required
+                          onChange={(e)=>{setemail(e.target.value)}}
+                        />
+                      </Field>
+                    </div>
+
+                  <Field>
+                        <Button type="submit" className=" border w-full bg-black text-white">
+                          {isLoading?"sending...":"Send Reset Link"}
+                        </Button>
+                        <div className="mt-2 text-center text-sm">
+                          <button
+                            type="button"
+                            onClick={() => setIsForgotPassword(false)}
+                            className="underline underline-offset-4"
+                          >
+                            Back to Login
+                          </button>
+                        </div>
+                  </Field>
+                  </form>
+              </div>}
             </FieldGroup>
-          </form>
         </CardContent>
       </Card>
     </div>
