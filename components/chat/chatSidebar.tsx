@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-// import { users } from "./chatData";
+import { SidebarCreateMenu } from "./SidebarCreateMenu";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -50,13 +50,15 @@ export function ChatSidebar() {
       {/* Header*/}
       <div className="flex-none p-5 flex items-center justify-between">
         <h1 className="text-2xl font-bold text-gray-800">Chats</h1>
-        <Button
-          variant="outline"
-          size="icon"
-          className="rounded-full h-10 w-10 border-dashed border-gray-300"
-        >
-          <Plus className="h-5 w-5 text-gray-500" />
-        </Button>
+        <SidebarCreateMenu>
+          <Button
+            variant="outline"
+            size="icon"
+            className="rounded-full h-10 w-10 border-dashed border-gray-300"
+          >
+            <Plus className="h-5 w-5 text-gray-500" />
+          </Button>
+        </SidebarCreateMenu>
       </div>
 
       {/* Search */}
