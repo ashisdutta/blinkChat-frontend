@@ -15,9 +15,13 @@ import { NearbyRoomDialog } from "./NearbyRoomDialog";
 
 interface SidebarCreateMenuProps {
   children: React.ReactNode;
+  onRefresh?: () => void;
 }
 
-export function SidebarCreateMenu({ children }: SidebarCreateMenuProps) {
+export function SidebarCreateMenu({
+  children,
+  onRefresh,
+}: SidebarCreateMenuProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showCreateRoom, setShowCreateRoom] = useState(false);
   const [showNearbyRoom, setShowNearbyRoom] = useState(false);
@@ -28,10 +32,12 @@ export function SidebarCreateMenu({ children }: SidebarCreateMenuProps) {
       <CreateRoomDialog
         open={showCreateRoom}
         onOpenChange={setShowCreateRoom}
+        onSuccess={onRefresh}
       />
       <NearbyRoomDialog
         open={showNearbyRoom}
         onOpenChange={setShowNearbyRoom}
+        onJoinSuccess={onRefresh}
       />
 
       {/* dropdown */}
