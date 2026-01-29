@@ -87,16 +87,24 @@ export function MessageList({ messages, loading, currentUserId }: MessageListPro
                   <AvatarFallback>U</AvatarFallback>
                 </Avatar>
 
-                <div
-                  className={cn(
-                    "relative px-4 py-3 shadow-md text-sm leading-relaxed rounded-2xl",
-                    isMe
-                      ? "bg-blue-600 text-white rounded-br-none" // Your Bubble
-                      : "bg-white border border-gray-100 rounded-bl-none text-gray-700" // Their Bubble
-                  )}
-                >
-                  <p>{msg.text}</p>
-                </div>
+                  <div
+                    className={cn(
+                      "relative px-3 py-2 shadow-md text-sm leading-snug rounded-2xl",
+                      isMe
+                        ? "bg-blue-600 text-white rounded-br-none"
+                        : "bg-white border border-gray-100 rounded-bl-none text-gray-700"
+                    )}
+                  >
+                    <span className={cn(
+                      "text-[10px] block leading-none mb-0.5 font-bold opacity-70", 
+                      isMe ? "text-blue-100" : "text-gray-600"
+                    )}>
+                      {isMe ? "You" : msg.userName}
+                    </span>
+                    
+                    <p>{msg.text}</p>
+                  </div>
+
               </div>
 
               <div className={cn("flex items-center gap-1 mt-1", isMe ? "mr-11" : "ml-11")}>
