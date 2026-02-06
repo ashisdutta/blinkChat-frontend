@@ -127,8 +127,7 @@ export function ChatWindow() {
   };
 
   return (
-    // <div className="flex flex-1 flex-col h-full min-h-0 bg-white overflow-hidden">
-    <div className="flex flex-col h-[100dvh] md:h-full w-full bg-white overflow-hidden">
+    <div className="flex flex-1 flex-col h-full min-h-0 bg-white overflow-hidden">
       {/* 1. HEADER */}
       <div className="flex-none ">
         <ChatHeader />
@@ -144,7 +143,7 @@ export function ChatWindow() {
       </div>
 
       {/* 3. INPUT */}
-      <div className="flex-none pb-safe">
+      <div className="flex-none">
         <ChatInput onSendMessage={handleSendMessage} />
       </div>
     </div>
