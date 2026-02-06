@@ -86,7 +86,7 @@ export const ImageUploadHandler = forwardRef<
 
         // AUTH & UPLOAD
         const authRes = await axios.get(
-          `${base_url}/auth/imagekit`
+          `${base_url}/api/auth/imagekit`
         );
         const { signature, token, expire } = authRes.data;
 
