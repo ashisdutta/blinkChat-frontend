@@ -21,7 +21,7 @@ type NewMessagePayload = {
 };
 
 export function ChatSidebar() {
-  const base_url = process.env.NEXT_PUBLIC_BASE_API_URL;
+  const base_url = process.env.NEXT_PUBLIC_API_URL;
   // --- STATE ---
   const [rooms, setRooms] = useState<Room[]>([]);
   const [filteredRooms, setFilteredRooms] = useState<Room[]>([]);

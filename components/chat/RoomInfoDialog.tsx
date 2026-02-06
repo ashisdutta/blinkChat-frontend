@@ -46,7 +46,7 @@ export function RoomInfoDialog({
   const [newName, setNewName] = useState("");
   const [isEditingDesc, setIsEditingDesc] = useState(false);
   const [newDescription, setNewDescription] = useState("");
-  const base_url = process.env.NEXT_PUBLIC_BASE_API_URL;
+  const base_url = process.env.NEXT_PUBLIC_API_URL;
   // State for Uploading
   const [isUploading, setIsUploading] = useState(false);
 

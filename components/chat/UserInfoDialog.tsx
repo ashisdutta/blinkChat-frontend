@@ -38,7 +38,7 @@ export function UserInfoDialog({
   const [newName, setNewName] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const [isViewImageOpen, setIsViewImageOpen] = useState(false); // New State for Image Viewer
-  const base_url = process.env.NEXT_PUBLIC_BASE_API_URL;
+  const base_url = process.env.NEXT_PUBLIC_API_URL;
 
   // --- REFS & HOOKS ---
   const uploadHandlerRef = useRef<UploadHandlerRef>(null);

@@ -33,7 +33,7 @@ export function ChatHeader() {
   const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const base_url = process.env.NEXT_PUBLIC_BASE_API_URL;
+  const base_url = process.env.NEXT_PUBLIC_API_URL;
   // 👇 Define fetch function so it can be reused
   const fetchHeaderData = useCallback(async () => {
     if (!roomId) {
@@ -43,7 +43,6 @@ export function ChatHeader() {
 
     try {
       // setLoading(true);
-      const base_url = process.env.NEXT_PUBLIC_BASE_API_URL;
       const res = await axios.get(`${base_url}/api/room/${roomId}`, {
         withCredentials: true,
       });

@@ -43,7 +43,7 @@ export function NearbyRoomDialog({
   const [rooms, setRooms] = useState<NearbyRoom[]>([]);
   const [searching, setSearching] = useState(false);
   const [joiningId, setJoiningId] = useState<string | null>(null);
-  const base_url = process.env.NEXT_PUBLIC_BASE_API_URL;
+  const base_url = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     if (location) {

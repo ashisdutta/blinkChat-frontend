@@ -22,7 +22,7 @@ export type Message = {
 };
 
 export function ChatWindow() {
-  const base_url = process.env.NEXT_PUBLIC_BASE_API_URL;
+  const base_url = process.env.NEXT_PUBLIC_API_URL;
   const params = useParams();
   const roomId = params.roomId as string;
 

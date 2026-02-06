@@ -44,7 +44,7 @@ export function CreateRoomDialog({
 
   const [submitting, setSubmitting] = useState(false);
 
-  const base_url = process.env.NEXT_PUBLIC_BASE_API_URL;
+  const base_url = process.env.NEXT_PUBLIC_API_URL;
 
   const handleSubmit = async () => {
     if (!name) return alert("Room name is required");
