@@ -103,7 +103,7 @@ export function OTPForm({
                   Verification code
                 </FieldLabel>
 
-                <div className="flex justify-center w-full">
+                <div className="flex justify-center w-full max-md:overflow-x-auto max-md:min-w-0">
                   <InputOTP
                     maxLength={6}
                     value={otp}
