@@ -73,27 +73,29 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
   }
 
   return (
-    <Card {...props}>
-      <div className="flex justify-center pt-1">
-        <img src="/logo.png" alt="logo" className="h-10 w-auto" />
+    <Card {...props} className="gap-3 py-4 max-w-[340px]">
+      <div className="flex justify-center pt-0.5">
+        <img src="/logo.png" alt="logo" className="h-8 w-auto" />
       </div>
-      <CardHeader>
-        <CardTitle>Create an account</CardTitle>
-        <CardDescription>
+      <CardHeader className="px-4 pt-2 pb-2 gap-1.5">
+        <CardTitle className="text-lg">Create an account</CardTitle>
+        <CardDescription className="text-sm">
           Enter your information below to create your account
         </CardDescription>
       </CardHeader>
 
-      <CardContent>
+      <CardContent className="px-4 pb-4 pt-0">
         {/*  AVATAR UPLOAD */}
-        <AvatarUpload
-          folderPath="/users/avatars"
-          onUploadComplete={(url) => setPhotoUrl(url)}
-        />
+        <div className="-mb-3">
+          <AvatarUpload
+            folderPath="/users/avatars"
+            onUploadComplete={(url) => setPhotoUrl(url)}
+          />
+        </div>
         <form onSubmit={handleSubmit}>
-          <FieldGroup className="space-y-1">
-            <Field>
-              <FieldLabel htmlFor="name">Name</FieldLabel>
+          <FieldGroup className="gap-3">
+            <Field className="gap-1.5">
+              <FieldLabel htmlFor="name" className="text-sm">Name</FieldLabel>
               <Input
                 id="name"
                 type="text"
@@ -101,25 +103,27 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
                 required
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
+                className="h-9"
               />
             </Field>
 
-            <Field>
-              <FieldLabel htmlFor="password">Password</FieldLabel>
+            <Field className="gap-1.5">
+              <FieldLabel htmlFor="password" className="text-sm">Password</FieldLabel>
               <Input
                 id="password"
                 type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                className="h-9"
               />
-              <FieldDescription>
+              <FieldDescription className="text-xs">
                 Must be at least 8 characters long.
               </FieldDescription>
             </Field>
 
-            <Field>
-              <FieldLabel htmlFor="confirm-password">
+            <Field className="gap-1.5">
+              <FieldLabel htmlFor="confirm-password" className="text-sm">
                 Confirm Password
               </FieldLabel>
               <Input
@@ -128,22 +132,23 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
                 required
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                className="h-9"
               />
-              <FieldDescription>Please confirm your password.</FieldDescription>
+              <FieldDescription className="text-xs">Please confirm your password.</FieldDescription>
             </Field>
 
             {error && (
-              <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-1">
+              <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-2">
                 {error}
               </p>
             )}
 
-            <FieldGroup className="pt-1 space-y-1">
-              <Button disabled={loading} type="submit"  className=" border w-full bg-black text-white">
+            <FieldGroup className="pt-2 gap-2">
+              <Button disabled={loading} type="submit" className="h-9 border w-full bg-black text-white">
                 {loading ? "Creating account..." : "Create Account"}
               </Button>
 
-              <FieldDescription className="px-6 text-center">
+              <FieldDescription className="px-2 text-center text-sm">
                 Already have an account? <a href="signin">Sign in</a>
               </FieldDescription>
             </FieldGroup>

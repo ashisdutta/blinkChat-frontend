@@ -40,7 +40,7 @@ export default function Page() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
-        <div className="flex justify-center px-12 lg:px-25 pt-25 bg-gradient-to-br from-slate-250 to-white">
+        <div className="flex justify-center px-4 sm:px-8 md:px-12 lg:px-25 pt-12 md:pt-25 bg-gradient-to-br from-slate-250 to-white">
           <MainLeft />
         </div>
         <div className="hidden lg:flex items-center justify-center">
