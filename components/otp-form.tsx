@@ -81,36 +81,36 @@ export function OTPForm({
 
   return (
     <div
-      className={cn("flex flex-col gap-6 w-full max-w-xl px-8", className)}
+      className={cn("flex flex-col gap-6 w-full max-w-xl px-8 max-md:px-4", className)}
       {...props}
     >
-      <Card className="w-full max-w-2xl border-slate-200 bg-white shadow-xl shadow-slate-200/60">
-        <CardHeader className="space-y-3 text-center px-8 pt-8">
-          <CardTitle className="text-3xl font-bold tracking-tight text-slate-900">
+      <Card className="w-full max-w-2xl border-slate-200 bg-white shadow-xl shadow-slate-200/60 max-md:shadow-lg">
+        <CardHeader className="space-y-3 text-center px-8 pt-8 max-md:px-4 max-md:pt-6 max-md:space-y-2">
+          <CardTitle className="text-3xl font-bold tracking-tight text-slate-900 max-md:text-2xl">
             Enter verification code
           </CardTitle>
-          <CardDescription className="text-slate-500 text-base">
+          <CardDescription className="text-slate-500 text-base max-md:text-sm">
             We sent a 6-digit code to{" "}
-            <span className="font-medium">{email}</span>
+            <span className="font-medium break-all">{email}</span>
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="px-8 pb-8 pt-4">
+        <CardContent className="px-8 pb-8 pt-4 max-md:px-4 max-md:pb-6 max-md:pt-3">
           <form onSubmit={handleSubmit}>
-            <FieldGroup className="space-y-6">
+            <FieldGroup className="space-y-6 max-md:space-y-4">
               <Field className="space-y-3">
                 <FieldLabel className="text-slate-700 font-medium text-center block">
                   Verification code
                 </FieldLabel>
 
-                <div className="flex justify-center">
+                <div className="flex justify-center max-md:overflow-x-auto max-md:justify-start max-md:min-w-0">
                   <InputOTP
                     maxLength={6}
                     value={otp}
                     onChange={setOtp}
                     required
                   >
-                    <InputOTPGroup className="gap-2.5 *:data-[slot=input-otp-slot]:rounded-md *:data-[slot=input-otp-slot]:border">
+                    <InputOTPGroup className="gap-2.5 max-md:gap-1.5 *:data-[slot=input-otp-slot]:rounded-md *:data-[slot=input-otp-slot]:border">
                       <InputOTPSlot index={0} />
                       <InputOTPSlot index={1} />
                       <InputOTPSlot index={2} />
@@ -121,7 +121,7 @@ export function OTPForm({
                   </InputOTP>
                 </div>
 
-                <FieldDescription className="text-center text-slate-500">
+                <FieldDescription className="text-center text-slate-500 max-md:text-sm">
                   Enter the 6-digit code sent to your email.
                 </FieldDescription>
               </Field>
@@ -136,12 +136,12 @@ export function OTPForm({
                 <Button
                   disabled={loading || otp.length !== 6}
                   type="submit"
-                  className="w-full h-12 text-base font-semibold bg-indigo-600 hover:bg-indigo-500 transition-all duration-200 shadow-md shadow-indigo-500/30"
+                  className="w-full h-12 max-md:h-11 text-base font-semibold bg-indigo-600 hover:bg-indigo-500 transition-all duration-200 shadow-md shadow-indigo-500/30"
                 >
                   {loading ? "Verifying..." : "Verify"}
                 </Button>
 
-                <FieldDescription className="text-center text-slate-600">
+                <FieldDescription className="text-center text-slate-600 max-md:text-sm">
                   Didn&apos;t receive the code?{" "}
                   <button
                     type="button"

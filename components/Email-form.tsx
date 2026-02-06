@@ -49,22 +49,22 @@ export function EmailForm({ className, onSuccess, ...props }: EmailFormProps) {
 
   return (
     <div
-      className={cn("flex flex-col gap-6 w-full max-w-xl px-8", className)}
+      className={cn("flex flex-col gap-6 w-full max-w-xl px-8 max-md:px-4", className)}
       {...props}
     >
-      <Card className="w-full max-w-2xl border-slate-200 bg-white shadow-xl shadow-slate-200/60">
-        <CardHeader className="space-y-3 text-center px-8 pt-8">
-          <CardTitle className="text-3xl font-bold tracking-tight text-slate-900">
+      <Card className="w-full max-w-2xl border-slate-200 bg-white shadow-xl shadow-slate-200/60 max-md:shadow-lg">
+        <CardHeader className="space-y-3 text-center px-8 pt-8 max-md:px-4 max-md:pt-6 max-md:space-y-2">
+          <CardTitle className="text-3xl font-bold tracking-tight text-slate-900 max-md:text-2xl">
             Verify your Email
           </CardTitle>
-          <CardDescription className="text-slate-500 text-base">
+          <CardDescription className="text-slate-500 text-base max-md:text-sm">
             Enter your email below to receive a verification code
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="px-8 pb-8 pt-4">
+        <CardContent className="px-8 pb-8 pt-4 max-md:px-4 max-md:pb-6 max-md:pt-3">
           <form onSubmit={handleSubmit}>
-            <FieldGroup className="space-y-6">
+            <FieldGroup className="space-y-6 max-md:space-y-4">
               <Field className="space-y-2">
                 <FieldLabel
                   htmlFor="email"
@@ -79,7 +79,7 @@ export function EmailForm({ className, onSuccess, ...props }: EmailFormProps) {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="h-12 text-base border-slate-300 focus:border-indigo-500 focus:ring-indigo-500"
+                  className="h-12 max-md:h-11 text-base max-md:text-base border-slate-300 focus:border-indigo-500 focus:ring-indigo-500"
                 />
               </Field>
 
@@ -93,12 +93,12 @@ export function EmailForm({ className, onSuccess, ...props }: EmailFormProps) {
                 <Button
                   disabled={loading}
                   type="submit"
-                  className="w-full h-12 text-base font-semibold bg-indigo-600 hover:bg-indigo-500 transition-all duration-200 shadow-md shadow-indigo-500/30"
+                  className="w-full h-12 max-md:h-11 text-base font-semibold bg-indigo-600 hover:bg-indigo-500 transition-all duration-200 shadow-md shadow-indigo-500/30"
                 >
                   {loading ? "Sending..." : "Send OTP"}
                 </Button>
 
-                <FieldDescription className="text-center text-slate-600">
+                <FieldDescription className="text-center text-slate-600 max-md:text-sm">
                   already have an account?{" "}
                   <a
                     href="signin"
