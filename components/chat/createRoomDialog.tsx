@@ -44,6 +44,8 @@ export function CreateRoomDialog({
 
   const [submitting, setSubmitting] = useState(false);
 
+  const base_url = process.env.NEXT_PUBLIC_BASE_API_URL;
+
   const handleSubmit = async () => {
     if (!name) return alert("Room name is required");
     if (!location) return alert("Location is required");
@@ -59,7 +61,7 @@ export function CreateRoomDialog({
         photo: roomPhoto,
       };
 
-      await axios.post("http://localhost:4000/api/room/create", payload, {
+      await axios.post(`${base_url}/api/room/create`, payload, {
         withCredentials: true,
       });
       router.refresh();
