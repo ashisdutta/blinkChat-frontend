@@ -89,8 +89,8 @@ export function OTPForm({
           <CardTitle className="text-3xl font-bold tracking-tight text-slate-900 max-md:text-2xl">
             Enter verification code
           </CardTitle>
-          <CardDescription className="text-slate-500 text-base max-md:text-sm">
-            We sent a 6-digit code to{" "}
+          <CardDescription className="text-slate-500 text-base max-md:text-sm flex flex-col items-center gap-0.5 text-center">
+            <span>We sent a 6-digit code to</span>
             <span className="font-medium break-all">{email}</span>
           </CardDescription>
         </CardHeader>
@@ -98,12 +98,12 @@ export function OTPForm({
         <CardContent className="px-8 pb-8 pt-4 max-md:px-4 max-md:pb-6 max-md:pt-3">
           <form onSubmit={handleSubmit}>
             <FieldGroup className="space-y-6 max-md:space-y-4">
-              <Field className="space-y-3">
-                <FieldLabel className="text-slate-700 font-medium text-center block">
+              <Field className="space-y-3 flex flex-col items-center">
+                <FieldLabel className="text-slate-700 font-medium text-center block w-full">
                   Verification code
                 </FieldLabel>
 
-                <div className="flex justify-center max-md:overflow-x-auto max-md:justify-start max-md:min-w-0">
+                <div className="flex justify-center w-full max-md:overflow-x-auto max-md:min-w-0">
                   <InputOTP
                     maxLength={6}
                     value={otp}
@@ -121,7 +121,7 @@ export function OTPForm({
                   </InputOTP>
                 </div>
 
-                <FieldDescription className="text-center text-slate-500 max-md:text-sm">
+                <FieldDescription className="text-center text-slate-500 max-md:text-sm w-full">
                   Enter the 6-digit code sent to your email.
                 </FieldDescription>
               </Field>
