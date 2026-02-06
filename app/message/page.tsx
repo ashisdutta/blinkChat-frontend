@@ -5,10 +5,10 @@ import Image from "next/image";
 
 export default function MessageHome() {
     return (
-        <div className="flex h-screen w-full p-0 md:p-4 overflow-hidden bg-gray-100 md:bg-transparent">
-        <div className="flex h-full md:h-[calc(100vh-2rem)] w-full bg-white md:shadow-xl overflow-hidden md:rounded-xl">
+        <div className="flex h-dvh md:h-screen w-full p-0 md:p-4 overflow-hidden bg-gray-100 md:bg-transparent">
+        <div className="flex h-full md:h-[calc(100vh-2rem)] w-full bg-white md:shadow-xl overflow-hidden md:rounded-xl max-md:min-h-0">
 
-            <div className="w-full border-r-0 lg:border-r xl:w-auto h-full flex flex-col ">
+            <div className="w-full border-r-0 lg:border-r xl:w-auto h-full flex flex-col min-h-0 max-md:overflow-hidden">
             <ChatSidebar />
             </div>
 

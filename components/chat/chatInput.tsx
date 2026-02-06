@@ -39,7 +39,7 @@ export function ChatInput({ onSendMessage }: ChatInputProps) {
   };
 
   return (
-    <div className="p-4 border-t bg-white relative">
+    <div className="p-4 max-md:p-3 max-md:pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] border-t bg-white relative shrink-0">
       {/* EMOJI PICKER POPUP */}
       {showEmojiPicker && (
         <div className="absolute bottom-20 left-4 z-50 shadow-xl border border-gray-200 rounded-2xl overflow-hidden">

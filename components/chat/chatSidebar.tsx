@@ -116,9 +116,9 @@ export function ChatSidebar() {
   }, [rooms]);
 
   return (
-    <div className="w-full md:w-[320px] flex flex-col md:border-r bg-white h-full min-h-0">
+    <div className="w-full md:w-[320px] flex flex-col md:border-r bg-white h-full min-h-0 max-md:overflow-hidden">
       {/* HEADER */}
-      <div className="flex-none p-5 flex items-center justify-between">
+      <div className="flex-none p-5 max-md:p-4 flex items-center justify-between shrink-0">
         <h1 className="text-2xl font-bold text-gray-800">Rooms</h1>
         <SidebarCreateMenu onRefresh={fetchRooms}>
           <Button
@@ -132,7 +132,7 @@ export function ChatSidebar() {
       </div>
 
       {/* SEARCH */}
-      <div className="flex-none px-5 pb-4">
+      <div className="flex-none px-5 pb-4 max-md:px-4 max-md:pb-3 shrink-0">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
           <Input
@@ -145,7 +145,7 @@ export function ChatSidebar() {
 
       {/* ROOM LIST (Scrollable) */}
       <div className="flex-1 min-h-0 overflow-hidden">
-        <ScrollArea className="h-full">
+        <ScrollArea className="h-full min-h-0">
           <div className="flex flex-col pb-2">
             {filteredRooms.map((room) => (
               <SidebarItem key={room.id} room={room} />
@@ -155,7 +155,7 @@ export function ChatSidebar() {
       </div>
 
       {/* 👇 FOOTER (Fixed at Bottom) */}
-      <div className="flex-none">
+      <div className="flex-none shrink-0">
         <UserSidebarFooter user={currentUser} setUser={setCurrentUser} />
       </div>
     </div>

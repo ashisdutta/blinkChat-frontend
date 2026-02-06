@@ -1,2 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+
+/* Mobile-only fixes: ensure proper viewport and flex shrinking on phones */
+@media (max-width: 767px) {
+  /* Allow ScrollArea viewport to shrink in flex layouts (profile footer + chat input visible) */
+  [data-slot="scroll-area-viewport"] {
+    min-height: 0;
+  }
+}

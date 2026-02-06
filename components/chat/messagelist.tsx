@@ -69,7 +69,7 @@ export function MessageList({
 
   return (
     <>
-      <ScrollArea className="h-full w-full">
+      <ScrollArea className="h-full w-full min-h-0">
         <div className="flex flex-col gap-4 px-4 py-4 pb-4">
           {messages.map((msg, index) => {
             // LOGIC: Compare msg.userId with currentUserId
