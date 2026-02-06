@@ -19,7 +19,7 @@ interface UserSidebarFooterProps {
     return (
         <>
         {/* h-[80px]: This forces the box height to match the message input area */}
-        <div className="h-[83px] px-4 border-t bg-gray-50 flex items-center mt-auto">
+        <div className="h-[83px] px-4 border-t bg-gray-50 flex items-center mt-auto shrink-0 max-md:pb-[env(safe-area-inset-bottom,0px)]">
             
             {isLoading ? (
             // LOADING STATE: Keeps the shape while fetching
