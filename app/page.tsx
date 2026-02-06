@@ -44,9 +44,11 @@ export default function Page() {
           <MainLeft />
         </div>
         <div className="hidden lg:flex items-center justify-center">
-          <video autoPlay loop muted playsInline className="max-w-xl w-full">
-            <source src="/frontpage.mp4" type="video/mp4" />
-          </video>
+          <img 
+              src="/gossip.gif" 
+              alt="Frontpage Animation" 
+              className="max-w-xl w-full" 
+            />
         </div>
       </div>
 
