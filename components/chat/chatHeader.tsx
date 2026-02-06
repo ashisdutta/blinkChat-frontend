@@ -33,7 +33,7 @@ export function ChatHeader() {
   const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const base_url = process.env.NEXT_PUBLIC_BASE_API_URL;
   // 👇 Define fetch function so it can be reused
   const fetchHeaderData = useCallback(async () => {
     if (!roomId) {
@@ -79,7 +79,7 @@ export function ChatHeader() {
       try {
         setIsExiting(true); // Start exiting spinner
         await axios.post(
-          `http://localhost:4000/api/room/${roomId}/leave`,
+          `${base_url}/api/room/${roomId}/leave`,
           {},
           { withCredentials: true }
         );
